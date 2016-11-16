@@ -28,17 +28,6 @@ public class LmdbDocManager implements DocManager {
         return null;
     }
 
-    public static void main(String[] args) {
-        try {
-            LmdbDocManager docManager = new LmdbDocManager("docsDir");
-            docManager.start();
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private final String docsDir;
     private Database db;
 
@@ -47,6 +36,7 @@ public class LmdbDocManager implements DocManager {
     }
 
     public void start() {
+        System.out.println("jlp:" + System.getProperty("java.library.path"));
         Env env = new Env(docsDir);
         db = env.openDatabase();
     }

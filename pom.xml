@@ -8,6 +8,10 @@
     <artifactId>mewbase</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--<properties>-->
+        <!--<java.library.path>${project.build.directory}/nativelib/META-INF/native/linux64</java.library.path>-->
+    <!--</properties>-->
+
     <dependencies>
         <dependency>
             <groupId>io.vertx</groupId>
@@ -36,11 +40,11 @@
             <version>1.7.21</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.deephacks.lmdbjni</groupId>
-            <artifactId>lmdbjni</artifactId>
-            <version>0.4.6</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.deephacks.lmdbjni</groupId>-->
+            <!--<artifactId>lmdbjni</artifactId>-->
+            <!--<version>0.4.6</version>-->
+        <!--</dependency>-->
 
         <!-- prebuilt liblmdb platform packages -->
 
@@ -53,13 +57,13 @@
         <!--<dependency>-->
             <!--<groupId>org.deephacks.lmdbjni</groupId>-->
             <!--<artifactId>lmdbjni-osx64</artifactId>-->
-            <!--<version>${lmdbjni.version}</version>-->
+            <!--<version>0.4.6</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
             <!--<groupId>org.deephacks.lmdbjni</groupId>-->
             <!--<artifactId>lmdbjni-win64</artifactId>-->
-            <!--<version>${lmdbjni.version}</version>-->
+            <!--<version>0.4.6</version>-->
         <!--</dependency>-->
 
         <!-- Test dependencies -->
@@ -99,6 +103,54 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <plugins>
+
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-surefire-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<forkMode>once</forkMode>-->
+                    <!--<argLine>-Djava.library.path=${project.build.directory}/nativelib/META-INF/native/linux64</argLine>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-dependency-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>unpack</id>-->
+                        <!--<phase>compile</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>unpack</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<artifactItems>-->
+                                <!--&lt;!&ndash;<artifactItem>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<groupId>org.deephacks.lmdbjni</groupId>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<artifactId>lmdbjni</artifactId>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<version>0.4.6</version>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;<classifier>${build.type}</classifier>&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<type>jar</type>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<overWrite>false</overWrite>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<outputDirectory>${project.build.directory}/nativelib</outputDirectory>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</artifactItem>&ndash;&gt;-->
+                                <!--<artifactItem>-->
+                                    <!--<groupId>org.deephacks.lmdbjni</groupId>-->
+                                    <!--<artifactId>lmdbjni-linux64</artifactId>-->
+                                    <!--<version>0.4.6</version>-->
+                                    <!--&lt;!&ndash;<classifier>${build.type}</classifier>&ndash;&gt;-->
+                                    <!--<type>jar</type>-->
+                                    <!--<overWrite>true</overWrite>-->
+                                    <!--<outputDirectory>${project.build.directory}/nativelib</outputDirectory>-->
+                                <!--</artifactItem>-->
+                            <!--</artifactItems>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+        </plugins>
     </build>
 
 
